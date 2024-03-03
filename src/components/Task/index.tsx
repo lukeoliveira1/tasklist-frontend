@@ -6,24 +6,13 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.css";
 import { deleteTask } from "@/api/task/delete";
 import { useRouter } from "next/router";
+import { TaskForm } from "@/types/task";
 
-interface TaskProps {
-  taskId: number;
-  title: string;
-  description?: string;
-  status: string;
-}
-
-export default function Task({
-  taskId,
-  title,
-  description,
-  status,
-}: TaskProps) {
+export default function Task({ taskId, title, description, status }: TaskForm) {
   const router = useRouter();
 
   function handleClickEdit() {
-    router.push(`./edit_task/${taskId}`);
+    router.push(`./${taskId}`);
   }
 
   async function handleClickDelete() {
@@ -32,7 +21,7 @@ export default function Task({
         "Tem certeza que deseja excluir esta tarefa?"
       );
       if (confirmed) {
-        await deleteTask(taskId);
+        await deleteTask(Number(taskId));
         alert("Tarefa excluída com sucesso!");
         window.location.reload();
       }

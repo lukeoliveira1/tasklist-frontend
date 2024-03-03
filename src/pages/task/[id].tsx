@@ -2,16 +2,9 @@ import styles from "@/styles/task.module.css";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
-import { getTask } from "@/api/task/getById";
+import { getByIdTask } from "@/api/task/getById";
 import { TaskForm } from "@/types/task";
 import { putUpdateTask } from "@/api/task/put";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  status: string;
-}
 
 export default function EditTaskForm() {
   const router = useRouter();
@@ -23,7 +16,7 @@ export default function EditTaskForm() {
 
   const fetchTask = async (taskId: string) => {
     try {
-      const task = await getTask(Number(taskId));
+      const task = await getByIdTask(Number(taskId));
       setTitle(task.title);
       setDescription(task.description ? task.description : "");
       setStatus(task.status);
@@ -54,7 +47,7 @@ export default function EditTaskForm() {
     } catch (error) {
       alert(error);
     } finally {
-      router.push("/list");
+      router.push("./list");
     }
   }
 
@@ -100,7 +93,7 @@ export default function EditTaskForm() {
               </select>
 
               <div className={styles.divFormButton}>
-                <a href="/list" className={styles.link}>
+                <a href="./list" className={styles.link}>
                   <input
                     type="button"
                     value="Cancelar"

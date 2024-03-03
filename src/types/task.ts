@@ -3,7 +3,7 @@ export type TaskForm = {
   title: string;
   description?: string;
   status: string;
-}
+};
 
 export type TaskData = {
   id: number;
