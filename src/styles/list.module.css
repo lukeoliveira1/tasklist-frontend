@@ -1,0 +1,34 @@
+
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Overpass", sans-serif;
+    font-size: 14px;
+    background-color: #10B786;
+  }
+  
+  .divMain {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 35px 45px 35px 45px;
+    background-color: #DEDEDE;
+  }
+
+  .divItems {
+    margin-top: 25px;
+    height: 300px; 
+    overflow-y: auto; 
+    padding-right: 25px;
+  }
+
+  .link {
+    text-decoration: none;
+  }

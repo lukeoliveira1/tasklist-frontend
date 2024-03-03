@@ -1,0 +1,15 @@
+.divTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+  }
+
+  .divTitle h1 {
+    font-size: 32px;
+  }
+
+  .link {
+    text-decoration: none;
+    cursor: pointer;
+  }

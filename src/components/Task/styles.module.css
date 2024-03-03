@@ -1,0 +1,45 @@
+.divTask {
+    display: flex;
+    flex-direction: row;
+    background-color: #F4F4F4;
+    padding: 5px 10px 5px 10px;
+    gap: 40px;
+    margin-bottom: 30px;
+    justify-content: space-between; 
+}
+
+.divMain {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.divMain h1 {
+    font-size: 20px;
+}
+
+.divMain p {
+    color: #4B4B4B;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.divTitle {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.divIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
+
+.link {
+    text-decoration: none; 
+    color: #10B786;
+}

@@ -1,0 +1,16 @@
+.button {
+  background-color: #10B786;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: "Overpass", sans-serif;
+  margin: 20px;
+  cursor: pointer;
+}
+
