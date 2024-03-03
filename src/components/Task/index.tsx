@@ -4,20 +4,37 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles.module.css";
+import { deleteTask } from "@/api/task/delete";
+import { useRouter } from "next/router";
 
 interface TaskProps {
+  taskId: number;
   title: string;
   description?: string;
   status: string;
 }
 
-export default function Task({ title, description, status }: TaskProps) {
+export default function Task({
+  taskId,
+  title,
+  description,
+  status,
+}: TaskProps) {
   function handleClickEdit() {
     console.log("Ícone clicado");
   }
-  function handleClickDelete() {
-    console.log("Ícone clicado");
+
+  async function handleClickDelete() {
+    try {
+      await deleteTask(taskId);
+      alert("Tarefa excluída com sucesso!");
+    } catch (error) {
+      alert(error);
+    } finally {
+      window.location.reload();
+    }
   }
+
   return (
     <>
       <div className={styles.divTask}>

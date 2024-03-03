@@ -1,8 +1,9 @@
 import styles from "@/styles/task.module.css";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-import { TaskForm, postCreateTask } from "@/api/create-task/post";
+import { postCreateTask } from "@/api/task/post";
 import Header from "@/components/Header";
+import { TaskForm } from "@/types/task";
 
 export default function Form() {
   const router = useRouter();
@@ -69,6 +70,7 @@ export default function Form() {
                 className={styles.inputsForm}
                 onChange={(event) => setStatus(event.target.value)}
               >
+                <option value="">----------</option>
                 <option value="TODO">A fazer</option>
                 <option value="IN_PROGRESS">Em progresso</option>
                 <option value="DONE">Concluída</option>

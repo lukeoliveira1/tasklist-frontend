@@ -31,6 +31,7 @@ export default function Home() {
             {tasks.map((task) => (
               <Task
                 key={task.id}
+                taskId={task.id}
                 title={task.title}
                 description={task.description}
                 status={task.status_display}
