@@ -1,18 +1,44 @@
 import styles from "@/styles/task.module.css";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { postCreateTask } from "@/api/task/post";
 import Header from "@/components/Header";
+import { getTask } from "@/api/task/get";
 import { TaskForm } from "@/types/task";
+import { putUpdateTask } from "@/api/task/put";
 
-export default function Form() {
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  status: string;
+}
+
+export default function EditTaskForm() {
   const router = useRouter();
+  const { id } = router.query;
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [status, setStatus] = useState<string>("");
 
-  async function handleCreateUsuario(event: FormEvent) {
+  const fetchTask = async (taskId: string) => {
+    try {
+      const task = await getTask(Number(taskId));
+      setTitle(task.title);
+      setDescription(task.description ? task.description : "");
+      setStatus(task.status);
+    } catch (error) {
+      console.error("Failed to fetch task:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchTask(id as string);
+    }
+  }, [id]);
+
+  async function handleEditTask(event: FormEvent) {
     event.preventDefault();
 
     try {
@@ -22,17 +48,13 @@ export default function Form() {
         status: status,
       };
 
-      await postCreateTask(bodyTaskForm);
+      await putUpdateTask(Number(id), bodyTaskForm);
 
-      setTitle("");
-      setDescription("");
-      setStatus("");
-
-      alert("Tarefa cadastrado com sucesso!");
+      alert("Tarefa atualizada com sucesso!");
     } catch (error) {
       alert(error);
     } finally {
-      router.push("./list");
+      router.push("/list");
     }
   }
 
@@ -40,10 +62,10 @@ export default function Form() {
     <>
       <div className={styles.body}>
         <div className={styles.divMain}>
-          <Header title="Tarefa" on_button={false} />
+          <Header title="Editar Tarefa" on_button={false} />
 
           <div className={styles.divForm}>
-            <form onSubmit={handleCreateUsuario}>
+            <form onSubmit={handleEditTask}>
               <label className={styles.labelsForm}>Título: </label>
               <input
                 type="text"
@@ -69,6 +91,7 @@ export default function Form() {
                 name="status"
                 className={styles.inputsForm}
                 onChange={(event) => setStatus(event.target.value)}
+                value={status}
               >
                 <option value="">----------</option>
                 <option value="TODO">A fazer</option>
@@ -77,7 +100,7 @@ export default function Form() {
               </select>
 
               <div className={styles.divFormButton}>
-                <a href="./list" className={styles.link}>
+                <a href="/list" className={styles.link}>
                   <input
                     type="button"
                     value="Cancelar"
@@ -91,7 +114,7 @@ export default function Form() {
                 </a>
                 <input
                   type="submit"
-                  value="Enviar"
+                  value="Salvar"
                   className={styles.buttonForm}
                   style={{
                     backgroundColor: "#10B786",

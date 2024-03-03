@@ -20,8 +20,10 @@ export default function Task({
   description,
   status,
 }: TaskProps) {
+  const router = useRouter();
+
   function handleClickEdit() {
-    console.log("Ícone clicado");
+    router.push(`./edit_task/${taskId}`);
   }
 
   async function handleClickDelete() {

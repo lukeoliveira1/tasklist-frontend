@@ -14,7 +14,7 @@ export default function Task({ title, on_button }: TaskProps) {
       <div className={styles.divTitle}>
         <h1> {title} </h1>
         {on_button ? (
-          <a href="./task" className={styles.link}>
+          <a href="./create_task" className={styles.link}>
             <Button title="Adicionar" />
           </a>
         ) : (
