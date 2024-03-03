@@ -26,8 +26,14 @@ export default function Task({
 
   async function handleClickDelete() {
     try {
-      await deleteTask(taskId);
-      alert("Tarefa excluída com sucesso!");
+      const confirmed = window.confirm(
+        "Tem certeza que deseja excluir esta tarefa?"
+      );
+      if (confirmed) {
+        await deleteTask(taskId);
+        alert("Tarefa excluída com sucesso!");
+        window.location.reload();
+      }
     } catch (error) {
       alert(error);
     } finally {
