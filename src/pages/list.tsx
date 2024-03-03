@@ -2,23 +2,23 @@ import styles from "@/styles/list.module.css";
 import { useEffect, useState } from "react";
 import Task from "@/components/Task";
 import Header from "@/components/Header";
-import api from "@/services/api";
-
-type TaskData = {
-  id: number;
-  title: string;
-  description?: string;
-  status: string;
-  status_display: string;
-};
+import { getTasks } from "@/api/task/get";
+import { TaskData } from "@/types/task";
 
 export default function Home() {
   const [tasks, setTasks] = useState<TaskData[]>([]);
 
+  const fetchTasks = async () => {
+    try {
+      const response = await getTasks();
+      setTasks(response);
+    } catch (error) {
+      console.error("Failed to fetch task:", error);
+    }
+  };
+
   useEffect(() => {
-    api.get<TaskData[]>("/task/").then((response) => {
-      setTasks(response.data);
-    });
+    fetchTasks();
   }, []);
 
   return (

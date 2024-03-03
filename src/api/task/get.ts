@@ -1,12 +1,12 @@
 import api from "@/services/api";
-import { TaskForm } from "@/types/task";
+import { TaskData } from "@/types/task";
 
-export const getTask = async (taskId: number): Promise<TaskForm> => {
+export const getTasks = async (): Promise<TaskData[]> => {
   try {
-    const response = await api.get<TaskForm>(`task/${taskId}/`);
+    const response = await api.get<TaskData[]>("/task/");
     return response.data;
   } catch (error) {
     console.log(error);
-    throw new Error("Erro ao obter a tarefa");
+    throw new Error("Erro ao obter as tarefas");
   }
 };

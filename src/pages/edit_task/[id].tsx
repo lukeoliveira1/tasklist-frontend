@@ -2,7 +2,7 @@ import styles from "@/styles/task.module.css";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
-import { getTask } from "@/api/task/get";
+import { getTask } from "@/api/task/getById";
 import { TaskForm } from "@/types/task";
 import { putUpdateTask } from "@/api/task/put";
 
