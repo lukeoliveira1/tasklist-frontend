@@ -14,5 +14,6 @@ Este é um frontend simples desenvolvido em Next.js e React para consumir a API 
    ```bash
    npm install 
    npm run dev
+ ```
 
 <img width="625" alt="image" src="https://github.com/lukeoliveira1/tasklist-frontend/assets/105166358/4d6789a8-0ccb-40f2-97a6-e2a104c9a66e">
