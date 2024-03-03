@@ -9,6 +9,7 @@ type TaskData = {
   title: string;
   description?: string;
   status: string;
+  status_display: string;
 };
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
                 key={task.id}
                 title={task.title}
                 description={task.description}
-                status={task.status}
+                status={task.status_display}
               />
             ))}
           </div>
