@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { getByIdTask } from "@/api/task/getById";
 import { TaskForm } from "@/types/task";
 import { putUpdateTask } from "@/api/task/put";
+import Link from "next/link";
 
 export default function EditTaskForm() {
   const router = useRouter();
@@ -93,7 +94,7 @@ export default function EditTaskForm() {
               </select>
 
               <div className={styles.divFormButton}>
-                <a href="./list" className={styles.link}>
+                <Link href="./list" className={styles.link}>
                   <input
                     type="button"
                     value="Cancelar"
@@ -104,7 +105,7 @@ export default function EditTaskForm() {
                     }}
                     formNoValidate
                   />
-                </a>
+                </Link>
                 <input
                   type="submit"
                   value="Salvar"

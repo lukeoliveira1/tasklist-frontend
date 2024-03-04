@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./styles.module.css";
 import Button from "../Button";
+import Link from "next/link";
 
 interface TaskProps {
   title: string;
@@ -14,9 +15,9 @@ export default function Task({ title, on_button }: TaskProps) {
       <div className={styles.divTitle}>
         <h1> {title} </h1>
         {on_button ? (
-          <a href="./create" className={styles.link}>
+          <Link href="./create" className={styles.link}>
             <Button title="Adicionar" />
-          </a>
+          </Link>
         ) : (
           ""
         )}

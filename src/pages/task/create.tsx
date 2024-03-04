@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { postCreateTask } from "@/api/task/post";
 import Header from "@/components/Header";
 import { TaskForm } from "@/types/task";
+import Link from "next/link";
 
 export default function CreateTaskForm() {
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function CreateTaskForm() {
               </select>
 
               <div className={styles.divFormButton}>
-                <a href="./list" className={styles.link}>
+                <Link href="./list" className={styles.link}>
                   <input
                     type="button"
                     value="Cancelar"
@@ -88,7 +89,7 @@ export default function CreateTaskForm() {
                     }}
                     formNoValidate
                   />
-                </a>
+                </Link>
                 <input
                   type="submit"
                   value="Enviar"

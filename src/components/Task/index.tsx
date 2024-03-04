@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 import { deleteTask } from "@/api/task/delete";
 import { useRouter } from "next/router";
 import { TaskForm } from "@/types/task";
+import Link from "next/link";
 
 export default function Task({ taskId, title, description, status }: TaskForm) {
   const router = useRouter();
